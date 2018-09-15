@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.mapping.StockDataMapping">
+    <!--查询结果以日期升序排列-->
+    <select id="GetStockData" resultType="mybatis.domain.EntityStockData">
+        SELECT stockCode, valueDate, openingPrice, topPrice, closingPrice, dailyGrowthRate,lowestPrice, turnoverValue, moneyValue FROM stockdata WHERE stockCode=#{stockCode} ORDER BY valueDate ASC;
+    </select>
+
+
+    <!--获取指定日期数据-->
+    <!--获取对象集合，每个对象包括：股票代码、股票日期、开盘价、最高价、收盘价、最低价、成交量、成交金额-->
+    <select id="GetStockDataLimit" parameterType="java.util.Map" resultType="mybatis.domain.EntityStockData">
+        <![CDATA[
+
+        SELECT stockCode, valueDate, openingPrice, topPrice, closingPrice, dailyGrowthRate,lowestPrice, turnoverValue, moneyValue
+        FROM stockdata
+        WHERE stockdata.stockCode = #{stockCode} AND DATE_FORMAT(stockdata.valueDate,
+        '%Y-%m-%d') >= DATE_FORMAT(#{startDate}, '%Y-%m-%d') AND DATE_FORMAT(stockdata.valueDate, '%Y-%m-%d')<=
+        DATE_FORMAT(#{endDate}, '%Y-%m-%d') ORDER BY valueDate ASC;
+
+        ]]>
+    </select>
+</mapper>
