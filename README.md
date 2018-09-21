@@ -13,5 +13,15 @@
 - **关于**：介绍网站理念、各主要板块的概述。
 
 ### 其他事项
-- 数据库连接信息.properties更名为DataBase.properties即可使用，必要时可修改默认内容。
+- 记录数据库连接信息的`.properties`文件应更名为`DataBase.properties`，必要时可修改默认内容。
 - 项目使用的数据库结构已经给出sql文件。
+
+### License
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use these file except in compliance with the License.
+
+You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+See the License for the specific language governing permissions and limitations under the License.
