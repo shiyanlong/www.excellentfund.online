@@ -66,7 +66,7 @@ public class ComponentDataBackTestingController {
         List<EntityStockData> stockNameList = new ArrayList<>();
         String resultJson = "";
         if (dataFlag.equals("fundFlag")) {
-            fundNameList = dateService.GetFundValueDataLimit(fundCode, startDate, endDate);
+            fundNameList = dateService.GetFundValueDataLimit("fundvaluedata_" + fundCode.substring(fundCode.length() - 2), "'" + fundCode + "'", "'" + startDate + "'", "'" + endDate + "'");
             //将查询结果转为json字符串
             resultJson = JSON.toJSONString(fundNameList);
         }

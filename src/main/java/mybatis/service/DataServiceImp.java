@@ -34,8 +34,8 @@ public class DataServiceImp implements DataService {
      * @return
      */
     @Override
-    public List<EntityFundValueData> GetFundValueDataByCode(String fundCode) {
-        return fundDataMapping.GetFundValueDataByCode(fundCode);
+    public List<EntityFundValueData> GetFundValueDataByCode(String tableName, String fundCode) {
+        return fundDataMapping.GetFundValueDataByCode(tableName, fundCode);
     }
 
     /**
@@ -47,8 +47,8 @@ public class DataServiceImp implements DataService {
      * @return
      */
     @Override
-    public List<EntityFundValueData> GetFundValueDataLimit(String fundCode, String startDate, String endDate) {
-        return fundDataMapping.GetFundValueDataLimit(fundCode, startDate, endDate);
+    public List<EntityFundValueData> GetFundValueDataLimit(String tableName, String fundCode, String startDate, String endDate) {
+        return fundDataMapping.GetFundValueDataLimit(tableName, fundCode, startDate, endDate);
     }
 
     /**

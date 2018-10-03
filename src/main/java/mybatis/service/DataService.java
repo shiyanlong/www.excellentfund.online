@@ -10,9 +10,9 @@ public interface DataService {
     //一、基金类操作
     List<EntityFundNameData> GetFundNameData();
 
-    List<EntityFundValueData> GetFundValueDataByCode(String fundCode);
+    List<EntityFundValueData> GetFundValueDataByCode(@Param("tableName") String tableName, @Param("fundCode") String fundCode);
 
-    List<EntityFundValueData> GetFundValueDataLimit(@Param("fundCode") String fundCode, @Param("startDate") String startDate, @Param("endDate") String endDate);
+    List<EntityFundValueData> GetFundValueDataLimit(@Param("tableName") String tableName, @Param("fundCode") String fundCode, @Param("startDate") String startDate, @Param("endDate") String endDate);
 
 //    List<EntityFundShowFirstPage> GetFundPerformance(String fundType);
 
@@ -30,7 +30,7 @@ public interface DataService {
     List<EntityFundBaseData> GetFundBaseDataBySearchStr(String searchStr);
 
     //根据基金代码和指定时间（传入净值最新时间），查询基金目前现任的所有基金经理
-    List<EntityFundManagerData> GetFundManagerDataByCodeAndDate(@Param("fundCode") String fundCode,@Param("fundLastNAVDate") String fundLastNAVDate);
+    List<EntityFundManagerData> GetFundManagerDataByCodeAndDate(@Param("fundCode") String fundCode, @Param("fundLastNAVDate") String fundLastNAVDate);
 
     //二、股票类操作
     List<EntityStockData> GetStockData(String stockCode);

@@ -24,13 +24,15 @@ public class ComponentSingleFundMsgController {
 
     @RequestMapping(value = "SingleFundNAVChartAndTableShow.do", method = RequestMethod.POST)
     public void SingleFundNAVChartAndTableShow(@RequestBody String jsonstr, HttpServletResponse response) {
+        System.out.println("收到请求");
         //将json字符串转成json对象
         JSONObject jsonObject = JSONObject.parseObject(jsonstr);
         //获取json对象属性
         //基金代码
         String fundCode = (String) jsonObject.get("fundCode");
         //获取查询结果
-        List<EntityFundValueData> fundNameList = dateService.GetFundValueDataByCode(fundCode);
+        List<EntityFundValueData> fundNameList = dateService.GetFundValueDataByCode("fundvaluedata_" + fundCode.substring(fundCode.length() - 2), "'" + fundCode + "'");
+        System.out.println("fundvaluedata_" + fundCode.substring(fundCode.length() - 2) + "<" + fundCode);
         //将查询结果转为json字符串
         String resultJson = JSON.toJSONString(fundNameList);
         //返回查询数据

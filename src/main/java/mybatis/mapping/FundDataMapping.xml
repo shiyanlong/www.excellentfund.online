@@ -11,18 +11,19 @@
 
     <!--根据基金代码获取全净值-->
     <!--获取对象集合，每个对象包括：基金代码、基金单位净值日期、基金单位净值、基金累计净值、基金净值日增长率、基金申购状态、基金赎回状态、分红配送-->
-    <select id="GetFundValueDataByCode" resultType="mybatis.domain.EntityFundValueData">
-        SELECT fundCode, valueDate, NAV, cumulativeNAV, dailyGrowthRate, subscribeStatus, redemptionStatus, melonCutting FROM fundvaluedata WHERE fundCode=#{fundCode} ORDER BY valueDate ASC;
+    <select id="GetFundValueDataByCode" resultType="mybatis.domain.EntityFundValueData" statementType="STATEMENT">
+        SELECT fundCode, valueDate, NAV, cumulativeNAV, dailyGrowthRate, subscribeStatus, redemptionStatus, melonCutting
+        FROM ${tableName} WHERE fundCode=${fundCode} ORDER BY valueDate ASC;
     </select>
 
     <!--获取指定日期净值-->
     <!--获取对象集合，每个对象包括：基金代码、基金单位净值日期、基金单位净值、基金累计净值、基金净值日增长率、基金申购状态、基金赎回状态、分红配送-->
-    <select id="GetFundValueDataLimit" parameterType="java.util.Map" resultType="mybatis.domain.EntityFundValueData">
-        <![CDATA[
+    <select id="GetFundValueDataLimit" resultType="mybatis.domain.EntityFundValueData" statementType="STATEMENT">
         SELECT fundCode, valueDate, NAV, cumulativeNAV, dailyGrowthRate, subscribeStatus, redemptionStatus, melonCutting
-        FROM fundvaluedata WHERE fundvaluedata.fundCode = #{fundCode} AND DATE_FORMAT(fundvaluedata.valueDate,
-        '%Y-%m-%d') >= DATE_FORMAT(#{startDate}, '%Y-%m-%d') AND DATE_FORMAT(fundvaluedata.valueDate, '%Y-%m-%d')<=
-        DATE_FORMAT(#{endDate}, '%Y-%m-%d') ORDER BY valueDate ASC;
+        FROM ${tableName} WHERE fundCode = ${fundCode}
+        <![CDATA[
+        AND DATE_FORMAT(valueDate,'%Y-%m-%d') >= DATE_FORMAT(${startDate}, '%Y-%m-%d')
+        AND DATE_FORMAT(valueDate,'%Y-%m-%d') <= DATE_FORMAT(${endDate}, '%Y-%m-%d') ORDER BY valueDate ASC;
         ]]>
     </select>
 

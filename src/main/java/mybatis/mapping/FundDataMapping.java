@@ -10,9 +10,9 @@ public interface FundDataMapping {
 
     List<EntityFundNameData> GetFundNameData();
 
-    List<EntityFundValueData> GetFundValueDataByCode(String fundCode);
+    List<EntityFundValueData> GetFundValueDataByCode(@Param("tableName") String tableName, @Param("fundCode") String fundCode);
 
-    List<EntityFundValueData> GetFundValueDataLimit(@Param("fundCode") String fundCode, @Param("startDate") String startDate, @Param("endDate") String endDate);
+    List<EntityFundValueData> GetFundValueDataLimit(@Param("tableName") String tableName, @Param("fundCode") String fundCode, @Param("startDate") String startDate, @Param("endDate") String endDate);
 
     //根据基金代码，查询数据库，返回该基金的业绩数据
     List<EntityFundPerformance> GetFundPerformanceByCode(String fundCode);
@@ -35,5 +35,5 @@ public interface FundDataMapping {
     List<EntityFundBaseData> GetFundBaseDataBySearchStr(@Param("searchStr") String searchStr);
 
     //根据基金代码和指定时间（传入净值最新时间），查询基金目前现任的所有基金经理
-    List<EntityFundManagerData> GetFundManagerDataByCodeAndDate(@Param("fundCode") String fundCode,@Param("fundLastNAVDate") String fundLastNAVDate);
+    List<EntityFundManagerData> GetFundManagerDataByCodeAndDate(@Param("fundCode") String fundCode, @Param("fundLastNAVDate") String fundLastNAVDate);
 }
