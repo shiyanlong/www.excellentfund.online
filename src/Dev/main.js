@@ -37,6 +37,10 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(ElementUI);
 
+//引入axios
+import axios from 'axios';
+Vue.prototype.$http = axios;
+
 const store = new Vuex.Store({
     state: {
         //独立：参比基金列表要遍历展示的数据

@@ -156,6 +156,7 @@
     //引入lodash
     var lodash = require("lodash");
 
+
     export default {
         created: function () {
             //延迟发送快速搜索栏的查询字符串，防止引发多次查询，使结果混淆
@@ -247,27 +248,30 @@
         methods: {
             //快速搜索栏实时显示查询结果
             DataBackTestingSearchResultShow() {
-                $.ajax({
-                    type: "POST",
-                    url: "DataBackTestingSearchResultShow.do",
-                    data: this.searchStr,
-                    contentType: "application/json;charset=utf-8",
-                    dataType: "json",
-                    success: (data) => {
-                        //展示新查询结果前，清空旧查询结果
-                        this.searchResultArray = [];
-                        //遍历数据库查询结果
-                        $.each(data, (index, item) => {
-                            //将从fundbasedata表查询到的基金数据，遍历每个元素，并保存到searchResultList
-                            //每个元素均为实体类EntityFundBaseData的实例，属性对应实体类EntityFundBaseData的定义
-                            this.searchResultArray.push(item);
-                        });
-                    },
-                    error: () => {
-                        //若查询出现错误，仅清空旧查询结果
-                        this.searchResultArray = [];
-                    }
-                });
+
+
+
+                // $.ajax({
+                //     type: "POST",
+                //     url: "DataBackTestingSearchResultShow.do",
+                //     data: this.searchStr,
+                //     contentType: "application/json;charset=utf-8",
+                //     dataType: "json",
+                //     success: (data) => {
+                //         //展示新查询结果前，清空旧查询结果
+                //         this.searchResultArray = [];
+                //         //遍历数据库查询结果
+                //         $.each(data, (index, item) => {
+                //             //将从fundbasedata表查询到的基金数据，遍历每个元素，并保存到searchResultList
+                //             //每个元素均为实体类EntityFundBaseData的实例，属性对应实体类EntityFundBaseData的定义
+                //             this.searchResultArray.push(item);
+                //         });
+                //     },
+                //     error: () => {
+                //         //若查询出现错误，仅清空旧查询结果
+                //         this.searchResultArray = [];
+                //     }
+                // });
             },
             //点击搜索栏实时显示的查询结果，将选中的条目添加到参比基金列表
             AddSearchResultToFundNameAndCodeArray(item) {
