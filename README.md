@@ -16,6 +16,15 @@
 - 记录数据库连接信息的`.properties`文件应更名为`DataBase.properties`，必要时可修改默认内容。
 - 项目使用的数据库结构已经给出sql文件。
 
+### 项目环境
+- JDK 1.8
+- Spring 5.0.4.RELEASE
+- SpringMVC 5.0.4.RELEASE
+- MyBatis 3.4.5
+- MySQL 5.1.40
+- Vue 2.5.16
+- Webpack 4.15.1
+
 ### License
 - Licensed under the Apache License, Version 2.0 (the "License"); you may not use these file except in compliance with the License.
 - You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
